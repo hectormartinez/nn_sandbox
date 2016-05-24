@@ -2,6 +2,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation
 from keras.optimizers import SGD
 from keras.datasets import mnist
+import numpy as np
 
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 model = Sequential()
@@ -13,6 +14,25 @@ model.compile(optimizer='rmsprop',
 # generate dummy data
 # train the model, iterating on the data in batches
 # of 32 samples
-X_train = np.array(X_train)
-model.fit(X_train, y_train, nb_epoch=10, batch_size=32)
-model.evaluate(X_test,y_test)
+
+X2 = []
+for x in X_train:
+    r  = []
+    for xi in x:
+        r.extend(xi)
+    X2.append(r)
+
+X2 = np.array(X2)
+
+X3 = []
+for x in X_test:
+    r  = []
+    for xi in x:
+        r.extend(xi)
+    X3.append(r)
+
+X3 = np.array(X3)
+print(X3.shape)
+
+model.fit(X2, y_train, nb_epoch=10, batch_size=32)
+model.evaluate(X3,y_test)
