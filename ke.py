@@ -6,7 +6,14 @@ import numpy as np
 
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 model = Sequential()
-model.add(Dense(100, input_dim=784, activation='softmax'))
+model.add(Dense(1, input_dim=784, activation='softmax'))
+model.add(Activation('tanh'))
+model.add(Dropout(0.5))
+model.add(Dense(64, init='uniform'))
+model.add(Activation('tanh'))
+model.add(Dropout(0.5))
+model.add(Dense(10, init='uniform'))
+model.add(Activation('softmax'))
 
 model.compile(optimizer='rmsprop',
               loss='binary_crossentropy',
