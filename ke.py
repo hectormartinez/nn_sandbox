@@ -6,7 +6,8 @@ import numpy as np
 
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 model = Sequential()
-model.add(Dense(1, input_dim=784, activation='softmax'))
+model.add(Dense(100, input_dim=784, activation='softmax'))
+
 model.compile(optimizer='rmsprop',
               loss='binary_crossentropy',
               metrics=['accuracy'])
