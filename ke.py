@@ -32,7 +32,6 @@ for x in X_test:
     X3.append(r)
 
 X3 = np.array(X3)
-print(X3.shape)
 
 model.fit(X2, y_train, nb_epoch=10, batch_size=32)
 model.evaluate(X3,y_test)
