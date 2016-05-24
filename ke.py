@@ -3,7 +3,7 @@ from keras.layers import Dense, Dropout, Activation
 from keras.optimizers import SGD
 from keras.datasets import mnist
 
-(X_train, y_train), (X_test, y_test) = imdb.load_data()
+(X_train, y_train), (X_test, y_test) = mnist.load_data()
 model = Sequential()
 model.add(Dense(1, input_dim=784, activation='softmax'))
 model.compile(optimizer='rmsprop',
