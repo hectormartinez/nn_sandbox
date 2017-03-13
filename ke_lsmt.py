@@ -10,6 +10,11 @@ import argparse
 w2i_dict = dict()  # default value for unknown words
 l2i_dict = dict()
 
+max_features = 2000
+max_length = 50
+embedding_dim = 256
+batch_size = 128
+epochs = 2
 
 
 def read_tab_sep(file_name):
@@ -78,11 +83,6 @@ def main():
         test_X.append(test_x)
         test_Y.append(test_y)
 
-    max_features = 2000
-    max_length = 50
-    embedding_dim = 256
-    batch_size = 128
-    epochs = 2
 
     model = Sequential()
     model.add(Embedding(max_features, embedding_dim, input_length=max_length, dropout=0.2))
