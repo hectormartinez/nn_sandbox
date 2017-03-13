@@ -67,6 +67,9 @@ def main():
         train_X.append(train_X)
         train_Y.append(train_Y)
 
+    train_X = sequence.pad_sequences(train_X, max_length)
+    X_test = sequence.pad_sequences(X_test, max_length)
+
     test_X = []
     test_Y = []
     for wordseq, labelseq in read_tab_sep(args.test):
@@ -75,11 +78,11 @@ def main():
         test_X.append(test_x)
         test_Y.append(test_y)
 
-    max_features = 20000
-    max_length = 80
+    max_features = 2000
+    max_length = 50
     embedding_dim = 256
     batch_size = 128
-    epochs = 10
+    epochs = 2
 
     model = Sequential()
     model.add(Embedding(max_features, embedding_dim, input_length=max_length, dropout=0.2))
