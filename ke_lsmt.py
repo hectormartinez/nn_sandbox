@@ -88,10 +88,12 @@ def main():
     model.add(Embedding(max_features, embedding_dim, input_length=max_length, dropout=0.2))
     model.add(LSTM(embedding_dim, dropout_W=0.2, dropout_U=0.2))
     model.add(Dense(1, activation='sigmoid'))
+    print("compile model")
     model.compile(loss='binary_crossentropy',
                   optimizer='adam',
                   metrics=['accuracy'])
 
+    print("fit")
     model.fit(train_X, train_Y,batch_size=batch_size, nb_epoch=epochs, validation_data=(test_X, test_Y))
 
 
