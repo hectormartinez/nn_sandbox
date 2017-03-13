@@ -89,7 +89,7 @@ def main():
                   optimizer='adam',
                   metrics=['accuracy'])
 
-    model.fit(train_X, train_Y,batch_size=batch_size, nb_epoch=epochs, validation_data=(text_X, test_Y))
+    model.fit(train_X, train_Y,batch_size=batch_size, nb_epoch=epochs, validation_data=(test_X, test_Y))
 
 
 if __name__ == "__main__":
