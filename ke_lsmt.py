@@ -87,7 +87,7 @@ def main():
     model = Sequential()
     model.add(Embedding(max_features, embedding_dim, input_length=max_length, dropout=0.2))
     model.add(LSTM(embedding_dim, dropout_W=0.2, dropout_U=0.2))
-    model.add(Dense(1, activation='sigmoid'))
+    model.add(Dense(len(l2i_dict.keys()), activation='softmax'))
     print("compile model")
     model.compile(loss='binary_crossentropy',
                   optimizer='adam',
