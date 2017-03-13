@@ -79,18 +79,17 @@ def main():
         test_X.append(test_x)
         test_Y.append(test_y)
 
-
-    print("data read")
+    input("data reading done")
     model = Sequential()
     model.add(Embedding(max_features, embedding_dim, input_length=max_length, dropout=0.2))
     model.add(LSTM(embedding_dim, dropout_W=0.2, dropout_U=0.2))
     model.add(Dense(len(l2i_dict.keys()), activation='softmax'))
-    print("compile model")
+    input("model building done")
     model.compile(loss='binary_crossentropy',
                   optimizer='adam',
                   metrics=['accuracy'])
 
-    print("fit")
+    input("about to fit")
     model.fit(train_X, train_Y,batch_size=batch_size, nb_epoch=epochs, validation_data=(test_X, test_Y))
 
 
