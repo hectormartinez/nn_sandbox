@@ -80,6 +80,7 @@ def main():
         test_Y.append(test_y)
 
 
+    print("data read")
     model = Sequential()
     model.add(Embedding(max_features, embedding_dim, input_length=max_length, dropout=0.2))
     model.add(LSTM(embedding_dim, dropout_W=0.2, dropout_U=0.2))
