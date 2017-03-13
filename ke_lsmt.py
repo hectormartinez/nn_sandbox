@@ -12,7 +12,7 @@ l2i_dict = dict()
 
 max_features = 2000
 max_length = 50
-embedding_dim = 256
+embedding_dim = 64
 batch_size = 128
 epochs = 2
 
@@ -62,18 +62,14 @@ def main():
     parser.add_argument("--test",default="data/pos_ud_en_test.conll")
 
     args = parser.parse_args()
-    word_type_counter = 1
 
     train_X = []
     train_Y = []
-    for wordseq, labelseq in read_tab_sep(args.train):
+    for wordseq, labelseq in list(read_tab_sep(args.train))[:400]:
         train_x = [string2index(w,w2i_dict) for w in wordseq]
         train_y = [string2index(w,l2i_dict) for w in labelseq]
         train_X.append(train_X)
         train_Y.append(train_Y)
-
-    train_X = sequence.pad_sequences(train_X, max_length)
-    X_test = sequence.pad_sequences(X_test, max_length)
 
     test_X = []
     test_Y = []
